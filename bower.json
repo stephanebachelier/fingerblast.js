@@ -1,0 +1,16 @@
+{
+  "name": "fingerblast.js",
+  "version": "1.0.0",
+  "main": "fingerblast.js",
+  "description": "Emulate touch event for desktop browsers",
+  "keywords": [
+    "touch",
+    "finger",
+    "fingerblast"
+  ],
+  "license": "Apache v2",
+  "ignore": [
+    "**/.*",
+    "node_modules"
+  ]
+}
