@@ -1,7 +1,7 @@
 {
-  "name": "fingerblast.js",
+  "name": "fingerblast",
   "version": "1.0.0",
-  "main": "fingerblast.js",
+  "main": "dist/fingerblast.js",
   "description": "Emulate touch event for desktop browsers",
   "keywords": [
     "touch",
