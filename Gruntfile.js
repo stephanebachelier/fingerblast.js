@@ -81,6 +81,14 @@ module.exports = function(grunt) {
         src: ['lib/*.js']
       }
     },
+    jscs: {
+      options: {
+        config: '.jscsrc'
+      },
+      lib: {
+        src: ['lib/*.js']
+      }
+    },
     umd: {
       lib: {
         src: 'lib/<%= pkg.name %>.js',
@@ -118,7 +126,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['build']);
 
-  grunt.registerTask('build', ['clean', 'jshint', 'wrap:dist', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
+  grunt.registerTask('build', ['clean', 'jshint', 'jscs', 'wrap:dist', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
 
   grunt.registerTask('demos', ['build', 'clean:demos', 'copy:demo']);
 };
