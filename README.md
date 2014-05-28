@@ -20,13 +20,28 @@ This library has no dependency. Two build are provided:
 
 Minified versions are provided for both version.
 
- * non umd version: 7.7k, 4.2k minified
- * umd version: 8.9k, 4.4k minified
+ * non umd version: 7.9k, 4.2k minified
+ * umd version: 8.4k, 4.3k minified
 
 ## Usage
 
 
 ## Build
+
+There is a build task which lint, build the global and umd versions, and minify the build version in .min.js.
+
+The default grunt task will run the build task, so you only need to:
+
+```
+$ npm install
+$ grunt
+```
+
+Four files will be available in `dist` folder :
+ * fingerblast.js
+ * fingerblast.min.js
+ * fingerblast.umd.js
+ * fingerblast.umd.min.js
 
 ## Demos
 
@@ -34,11 +49,17 @@ There are two demos.
  * `index.html` which load FingerBlast with a `<script>`
  * `index.rjs.html` which use RequireJS to load FingerBlast
 
-
-
 ### dependencies
 
 Install demos dependencies which are `Ratchet` which is used for UI and `RequireJS`.
+
+If you have not already build the library
+```
+$ npm install
+$ grunt demos # will call the build task
+```
+
+Then,
 ```
 $ cd demos
 $ bower install
