@@ -15,7 +15,7 @@ module.exports = function(grunt) {
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       ' * Original work from phantom limb by Brian Cartensen\n' +
       ' * Adapted by @fat and @XhmikosR for github.com/twbs/ratchet\n' +
-      ' * Licensed <%= pkg.license %>\n*/\n\n',
+      ' * Licensed <%= pkg.license %>\n*/\n',
     // Task configuration.
     clean: {
       src: 'dist',
@@ -99,7 +99,7 @@ module.exports = function(grunt) {
           seperator: '\n',
           indent: '  ',
           wrapper: [
-            '(function () {\n',
+            '(function () {',
             '  window.FingerBlast = FingerBlast;\n});'] // IIFE
         }
       }
