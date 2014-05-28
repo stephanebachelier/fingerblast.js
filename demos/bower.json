@@ -1,0 +1,20 @@
+{
+  "name": "fingerblast_demos",
+  "version": "1.0.0",
+  "homepage": "https://github.com/stephanebachelier/fingerblast.js",
+  "authors": [
+    "Stéphane Bachelier <stephane.bachelier@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ratchet": "^2.0.2",
+    "requirejs": "~2.1.13"
+  }
+}

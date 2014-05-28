@@ -18,7 +18,8 @@ module.exports = function(grunt) {
       ' * Licensed <%= pkg.license %>\n*/\n\n',
     // Task configuration.
     clean: {
-      src: 'dist'
+      src: 'dist',
+      demos: 'demos/js'
     },
     concat: {
       options: {
@@ -32,6 +33,16 @@ module.exports = function(grunt) {
       umd: {
         src: 'dist/<%= pkg.name %>.umd.js',
         dest: 'dist/<%= pkg.name %>.umd.js'
+      }
+    },
+    copy: {
+      demo: {
+        files: [{
+          expand: true,
+          cwd: 'dist',
+          src: ['*.js'],
+          dest: 'demos/js/'
+        }]
       }
     },
     uglify: {
@@ -93,6 +104,9 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'jshint', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
+  grunt.registerTask('default', ['build']);
 
+  grunt.registerTask('build', ['clean', 'jshint', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
+
+  grunt.registerTask('demos', ['build', 'clean:demos', 'copy:demo']);
 };
