@@ -47,17 +47,16 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        compress: true,
+        preserveComments: 'some'
       },
       dist: {
-        files: [{
-          expand: true,
-          cwd: 'dist/',
-          src: ['*.js'],
-          dest: 'dist/',
-          ext: '.min.js',
-          extDot: 'last'   // need to support minification of .umd.js file
-        }]
+        src: '<%= concat.dist.dest %>',
+        dest: 'dist/<%= pkg.name %>.min.js'
+      },
+      umd: {
+        src: '<%= concat.umd.dest %>',
+        dest: 'dist/<%= pkg.name %>.umd.min.js'
       }
     },
     jshint: {
@@ -100,7 +99,7 @@ module.exports = function(grunt) {
           indent: '  ',
           wrapper: [
             '(function () {',
-            '  window.FingerBlast = FingerBlast;\n});'] // IIFE
+            '  window.FingerBlast = FingerBlast;\n})();'] // IIFE
         }
       }
     },
