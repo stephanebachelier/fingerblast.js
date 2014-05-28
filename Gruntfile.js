@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: 'lib/<%= pkg.name %>.js',
+        src: 'dist/<%= pkg.name %>.js',
         dest: 'dist/<%= pkg.name %>.js'
       },
       umd: {
@@ -91,6 +91,19 @@ module.exports = function(grunt) {
         indent: '    '
       }
     },
+    wrap: {
+      dist: {
+        src: 'lib/<%= pkg.name %>.js',
+        dest: 'dist/<%= pkg.name %>.js',
+        options: {
+          seperator: '\n',
+          indent: '  ',
+          wrapper: [
+            '(function () {\n',
+            '  window.FingerBlast = FingerBlast;\n});'] // IIFE
+        }
+      }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -106,7 +119,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['build']);
 
-  grunt.registerTask('build', ['clean', 'jshint', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
+  grunt.registerTask('build', ['clean', 'jshint', 'wrap:dist', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
 
   grunt.registerTask('demos', ['build', 'clean:demos', 'copy:demo']);
 };
