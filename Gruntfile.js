@@ -126,7 +126,7 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['build']);
 
-  grunt.registerTask('build', ['clean', 'jshint', 'jscs', 'wrap:dist', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
+  grunt.registerTask('build', ['clean:src', 'jshint', 'jscs', 'wrap:dist', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
 
   grunt.registerTask('demos', ['build', 'clean:demos', 'copy:demo']);
 };
