@@ -11,6 +11,18 @@
   "license": "Apache v2",
   "ignore": [
     "**/.*",
-    "node_modules"
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/stephanebachelier/fingerblast.js",
+  "authors": [
+    "Stéphane Bachelier <stephane.bachelier@gmail.com>"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
   ]
 }

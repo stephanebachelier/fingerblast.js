@@ -26,8 +26,12 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['lib/<%= pkg.name %>.js'],
+        src: 'lib/<%= pkg.name %>.js',
         dest: 'dist/<%= pkg.name %>.js'
+      },
+      umd: {
+        src: 'dist/<%= pkg.name %>.umd.js',
+        dest: 'dist/<%= pkg.name %>.umd.js'
       }
     },
     uglify: {
@@ -35,8 +39,14 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+        files: [{
+          expand: true,
+          cwd: 'dist/',
+          src: ['*.js'],
+          dest: 'dist/',
+          ext: '.min.js',
+          extDot: 'last'   // need to support minification of .umd.js file
+        }]
       }
     },
     jshint: {
@@ -61,6 +71,15 @@ module.exports = function(grunt) {
         src: ['lib/*.js']
       }
     },
+    umd: {
+      lib: {
+        src: 'lib/<%= pkg.name %>.js',
+        dest: 'dist/<%= pkg.name %>.umd.js',
+        amdModuleId: '<%= pkg.name %>',
+        objectToExport: 'FingerBlast',
+        indent: '    '
+      }
+    },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
@@ -74,6 +93,6 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'jshint', 'concat', 'uglify']);
+  grunt.registerTask('default', ['clean', 'jshint', 'concat:dist', 'umd', 'concat:umd', 'uglify']);
 
 };
