@@ -1,5 +1,7 @@
 # Fingerblast.js
 
+Available demo here : http://stephanebachelier.github.io/fingerblast.js
+
 ## Notice
 
 This small library is extracted from [ratchet](https://github.com/twbs/ratchet).
