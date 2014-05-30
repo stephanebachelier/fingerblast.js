@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FingerBlast demo</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="bower_components/ratchet/dist/css/ratchet.min.css">
+    <style rel="stylesheet">
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body ontouchstart="">
+
+    <header class="bar bar-nav">
+      <h1 class="title">Slider enabled for desktop browsers</h1>
+    </header>
+
+    <div class="bar bar-standard bar-header-secondary">
+      <div class="segmented-control">
+        <a class="control-item active">Base</a>
+        <a href="index.rjs.ios.html" class="control-item">iOS</a>
+        <a href="index.rjs.android.html" class="control-item">Android</a>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="slider">
+        <div class="slide-group">
+          <div class="slide">
+            <img src="img/argo.png" alt="Argo" width="640" height="300">
+          </div>
+          <div class="slide">
+             <img src="img/skyfall.png" alt="Skyfall" width="640" height="300">
+          </div>
+          <div class="slide">
+             <img src="img/ralph.png" alt="Wreck-It Ralph" width="640" height="300">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- add ratchet slider -->
+    <script src="bower_components/ratchet/js/sliders.js"></script>
+    <script src="bower_components/requirejs/require.js"></script>
+
+    <!-- load fingerblast for desktop users with RequireJS-->
+    <script>
+      require.config({
+        paths: {
+          fingerblast: 'js/fingerblast.umd'
+        }
+      });
+
+      require(['fingerblast'], function (FingerBlast) {
+        var fingerBlast = new FingerBlast('.slider');
+      });
+    </script>
+  </body>
+</html>
