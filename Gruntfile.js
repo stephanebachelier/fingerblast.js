@@ -120,6 +120,20 @@ module.exports = function(grunt) {
         files: '<%= jshint.lib.src %>',
         tasks: ['jshint:lib']
       }
+    },
+    'gh-pages': {
+      options: {
+        base: 'demos',
+        message: 'docs(demos): update demos'
+      },
+      src: [
+        '*.html',
+        'img/*',
+        'js/*',
+        'bower_components/ratchet/dist/{css,fonts}/*',
+        'bower_components/ratchet/js/sliders.js',
+        'bower_components/requirejs/require.js'
+      ]
     }
   });
 
