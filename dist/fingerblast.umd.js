@@ -1,4 +1,4 @@
-/*! fingerblast - v1.1.0 - 2014-05-28
+/*! fingerblast - v1.1.1 - 2014-06-25
  * Original work from phantom limb by Brian Cartensen
  * Adapted by @fat and @XhmikosR for github.com/twbs/ratchet
  * Licensed Apache v2
@@ -99,7 +99,7 @@
       },
 
       click: function (e) {
-        if (e.synthetic) {
+        if (e.synthetic || /^a$/.test(e.target.tagName.toLowerCase())) {
           return;
         }
         e.preventDefault();
